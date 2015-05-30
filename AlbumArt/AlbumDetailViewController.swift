@@ -8,10 +8,10 @@
 
 import UIKit
 import AFNetworking
+import AVFoundation
 
 
-
-class AlbumDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class AlbumDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TrackTableViewCellDelegate {
     
     var albumInfo: [String:AnyObject]!
     
@@ -20,6 +20,8 @@ class AlbumDetailViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var artistNameLabel: UILabel!
     
     @IBOutlet weak var tracksTableView: UITableView!
+    
+    var player: AVAudioPlayer?
     
     
     override func viewDidLoad() {
@@ -40,14 +42,20 @@ class AlbumDetailViewController: UIViewController, UITableViewDataSource, UITabl
                 let info = data as! [String:AnyObject]
                 
                 self.tracks = info["results"] as! [[String:AnyObject]]
+                
+                println(self.tracks.count)
+                
                 self.tracks.removeAtIndex(0)
                 self.tracksTableView.reloadData()
                 
-                }) { (request, error) -> Void in
+            }) { (request, error) -> Void in
                     
                     println(error)
             }
         }
+        
+        tracksTableView.dataSource = self
+        tracksTableView.delegate = self
         
     }
     
@@ -64,11 +72,36 @@ class AlbumDetailViewController: UIViewController, UITableViewDataSource, UITabl
             forIndexPath: indexPath) as! TrackTableViewCell
         
         cell.trackInfo = tracks[indexPath.row]
+        cell.delegate = self
         
         return cell
         
     }
     
+    func playSongWithURL(url: String) {
+        
+        player?.stop()
+        
+        println(url)
+        
+        if let url = NSURL(string: url) {
+            
+            if let trackData = NSData(contentsOfURL: url) {
+                
+                player = AVAudioPlayer(data: trackData, error: nil)
+                player?.play()
+            }
+           
+
+        }
+        
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        
+        player?.stop()
+        
+    }
     
 }
 

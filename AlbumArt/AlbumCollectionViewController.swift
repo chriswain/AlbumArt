@@ -12,11 +12,10 @@ import AFNetworking
 let reuseIdentifier = "albumCell"
 
 let itunesSearchAPI = "https://itunes.apple.com/search"
-let itunesLookupAPI = "https://itunes.apple.com/search"
+let itunesLookupAPI = "https://itunes.apple.com/lookup"
 
-class AlbumCollectionViewController: UICollectionViewController {
-    
-    let itunesAPI = "https://itunes.apple.com/search"
+class AlbumCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
+
     
     var albums: [[String:AnyObject]] = []
     
@@ -28,10 +27,13 @@ class AlbumCollectionViewController: UICollectionViewController {
         
         // Register cell classes
         //        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+    
         
         var requestManager = AFHTTPRequestOperationManager()
         
-        requestManager.GET(itunesAPI + "?entity=album&term=DaftPunk", parameters: nil, success: { (request, data) -> Void in
+        var searchArtist = "Nas"
+        
+        requestManager.GET(itunesSearchAPI + "?entity=album&term=\(searchArtist)", parameters: nil, success: { (request, data) -> Void in
             
             let info = data as! [String:AnyObject]
             
@@ -68,6 +70,13 @@ class AlbumCollectionViewController: UICollectionViewController {
     //        return 0
     //    }
     
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        
+        let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "sectionHeader", forIndexPath: indexPath) as! UICollectionReusableView
+        
+        return header
+        
+    }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //#warning Incomplete method implementation -- Return the number of items in the section
@@ -118,6 +127,29 @@ class AlbumCollectionViewController: UICollectionViewController {
             
             detailVC.albumInfo = albumInfo
         }
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        
+        var requestManager = AFHTTPRequestOperationManager()
+        
+        requestManager.GET(itunesSearchAPI + "?entity=album&term=\(searchBar.text)", parameters: nil, success: { (request, data) -> Void in
+            
+            let info = data as! [String:AnyObject]
+            
+            self.albums = info["results"] as! [[String:AnyObject]]
+            self.collectionView?.reloadData()
+            
+            }) { (request, error) -> Void in
+                
+                println(error)
+        }
+
+        
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        // pull keyboard back down
     }
     
 }

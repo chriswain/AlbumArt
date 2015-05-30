@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Q6Z-ep-zoS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Album Collection View Controller-->
@@ -13,7 +14,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="juv-KM-Xiu">
                             <size key="itemSize" width="100" height="100"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="headerReferenceSize" width="50" height="44"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
@@ -38,6 +39,27 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="sectionHeader" id="csP-aJ-pJJ">
+                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AjW-aw-JGf" customClass="ArtistSearchBar" customModule="AlbumArt" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="barTintColor" red="1" green="0.0" blue="0.086573815128913267" alpha="1" colorSpace="calibratedRGB"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="wgL-a1-T1j" id="Kmz-Ku-ij1"/>
+                                    </connections>
+                                </searchBar>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="bottomMargin" secondItem="AjW-aw-JGf" secondAttribute="bottom" constant="-8" id="2BP-HS-fe9"/>
+                                <constraint firstItem="AjW-aw-JGf" firstAttribute="top" secondItem="csP-aJ-pJJ" secondAttribute="topMargin" constant="-8" id="3KW-uU-Pyj"/>
+                                <constraint firstAttribute="trailingMargin" secondItem="AjW-aw-JGf" secondAttribute="trailing" constant="-8" id="Q8I-Y0-OxL"/>
+                                <constraint firstItem="AjW-aw-JGf" firstAttribute="leading" secondItem="csP-aJ-pJJ" secondAttribute="leadingMargin" constant="-8" id="giA-x7-M6k"/>
+                            </constraints>
+                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="wgL-a1-T1j" id="W5E-fx-krh"/>
                             <outlet property="delegate" destination="wgL-a1-T1j" id="sDy-NA-UzO"/>
@@ -61,20 +83,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6k-Gr-R2c">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6k-Gr-R2c">
                                 <rect key="frame" x="16" y="72" width="568" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="I8V-mn-Cuj"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="39"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZc-XC-Anu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZc-XC-Anu">
                                 <rect key="frame" x="16" y="165" width="568" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="Lie-pX-WuJ"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HRP-je-wsx">
-                                <rect key="frame" x="0.0" y="258" width="600" height="349"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HRP-je-wsx">
+                                <rect key="frame" x="0.0" y="258" width="600" height="335"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="trackCell" id="1Q3-7q-0ZL" customClass="TrackTableViewCell" customModule="AlbumArt" customModuleProvider="target">
@@ -84,9 +112,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UbP-p0-EiR">
-                                                    <rect key="frame" x="78" y="8" width="42" height="21"/>
+                                                    <rect key="frame" x="78" y="8" width="466" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MUa-uw-NAS">
@@ -95,11 +123,13 @@
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="toggleSong:" destination="1Q3-7q-0ZL" eventType="touchUpInside" id="ihK-K0-OVC"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="toggleSong" destination="MUa-uw-NAS" id="VCY-qO-xxF"/>
                                             <outlet property="trackNameLabel" destination="UbP-p0-EiR" id="a6e-k8-lIl"/>
                                         </connections>
                                     </tableViewCell>
@@ -108,9 +138,15 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="gZc-XC-Anu" firstAttribute="top" secondItem="K6k-Gr-R2c" secondAttribute="bottom" constant="8" id="5xD-mB-YhD"/>
                             <constraint firstAttribute="bottom" secondItem="HRP-je-wsx" secondAttribute="bottom" constant="7" id="9Al-Wr-eVB"/>
+                            <constraint firstItem="K6k-Gr-R2c" firstAttribute="top" secondItem="OUi-QW-qwC" secondAttribute="bottom" constant="8" id="MPA-jQ-Ouh"/>
+                            <constraint firstItem="gZc-XC-Anu" firstAttribute="trailing" secondItem="KaD-Do-FQW" secondAttribute="trailingMargin" id="VTe-SE-khK"/>
+                            <constraint firstItem="K6k-Gr-R2c" firstAttribute="leading" secondItem="KaD-Do-FQW" secondAttribute="leadingMargin" id="WkE-9X-LzV"/>
                             <constraint firstItem="HRP-je-wsx" firstAttribute="leading" secondItem="KaD-Do-FQW" secondAttribute="leading" id="aSk-bK-HxC"/>
+                            <constraint firstItem="gZc-XC-Anu" firstAttribute="leading" secondItem="KaD-Do-FQW" secondAttribute="leadingMargin" id="bXN-HN-Ysr"/>
                             <constraint firstItem="HRP-je-wsx" firstAttribute="top" secondItem="gZc-XC-Anu" secondAttribute="bottom" constant="8" id="gPo-vf-5Am"/>
+                            <constraint firstItem="K6k-Gr-R2c" firstAttribute="trailing" secondItem="KaD-Do-FQW" secondAttribute="trailingMargin" id="jZE-SL-kO3"/>
                             <constraint firstAttribute="trailing" secondItem="HRP-je-wsx" secondAttribute="trailing" id="kJJ-CB-7i9"/>
                         </constraints>
                     </view>

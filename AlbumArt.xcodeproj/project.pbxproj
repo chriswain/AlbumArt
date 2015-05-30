@@ -18,6 +18,7 @@
 		E87CF0EB1B189ED00063994C /* AlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87CF0EA1B189ED00063994C /* AlbumCollectionViewCell.swift */; };
 		E87CF0ED1B18A2310063994C /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = E87CF0EC1B18A2310063994C /* Podfile */; };
 		E8DE8D1A1B18E81F00392A46 /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE8D191B18E81F00392A46 /* TrackTableViewCell.swift */; };
+		E8FAA5AD1B1A184F00436E58 /* ArtistSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FAA5AC1B1A184F00436E58 /* ArtistSearchBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		E87CF0EC1B18A2310063994C /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		E8AD90FC1B18A8AF0065B1B2 /* AlbumArt-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AlbumArt-Bridging-Header.h"; sourceTree = "<group>"; };
 		E8DE8D191B18E81F00392A46 /* TrackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
+		E8FAA5AC1B1A184F00436E58 /* ArtistSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistSearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				E87CF0E81B189EA50063994C /* AlbumCollectionViewController.swift */,
 				E87CF0EA1B189ED00063994C /* AlbumCollectionViewCell.swift */,
 				E8DE8D191B18E81F00392A46 /* TrackTableViewCell.swift */,
+				E8FAA5AC1B1A184F00436E58 /* ArtistSearchBar.swift */,
 				E87CF0CC1B189D4C0063994C /* Main.storyboard */,
 				E87CF0C61B189D4C0063994C /* Supporting Files */,
 				E87CF0EC1B18A2310063994C /* Podfile */,
@@ -304,6 +307,7 @@
 			files = (
 				E8DE8D1A1B18E81F00392A46 /* TrackTableViewCell.swift in Sources */,
 				E87CF0EB1B189ED00063994C /* AlbumCollectionViewCell.swift in Sources */,
+				E8FAA5AD1B1A184F00436E58 /* ArtistSearchBar.swift in Sources */,
 				E87CF0E91B189EA50063994C /* AlbumCollectionViewController.swift in Sources */,
 				E87CF0CB1B189D4C0063994C /* AlbumDetailViewController.swift in Sources */,
 				E87CF0C91B189D4C0063994C /* AppDelegate.swift in Sources */,
