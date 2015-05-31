@@ -32,8 +32,10 @@ class TrackTableViewCell: UITableViewCell {
         
         if let url = trackInfo["previewUrl"] as? String {
             
+            sender.backgroundColor = UIColor.blueColor()
             delegate?.playSongWithURL(url)
-        }
+            
+        } 
     }
     
     @IBOutlet weak var trackNameLabel: UILabel!

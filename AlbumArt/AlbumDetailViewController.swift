@@ -81,7 +81,7 @@ class AlbumDetailViewController: UIViewController, UITableViewDataSource, UITabl
     func playSongWithURL(url: String) {
         
         player?.stop()
-        
+
         println(url)
         
         if let url = NSURL(string: url) {
@@ -90,6 +90,8 @@ class AlbumDetailViewController: UIViewController, UITableViewDataSource, UITabl
                 
                 player = AVAudioPlayer(data: trackData, error: nil)
                 player?.play()
+                
+                
             }
            
 

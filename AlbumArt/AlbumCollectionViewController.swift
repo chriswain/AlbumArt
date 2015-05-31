@@ -131,9 +131,13 @@ class AlbumCollectionViewController: UICollectionViewController, UICollectionVie
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         
+        var badSearch = searchBar.text
+        let goodSearch = badSearch.stringByReplacingOccurrencesOfString(" ", withString: "+", options: nil, range: nil)
+
+        
         var requestManager = AFHTTPRequestOperationManager()
         
-        requestManager.GET(itunesSearchAPI + "?entity=album&term=\(searchBar.text)", parameters: nil, success: { (request, data) -> Void in
+        requestManager.GET(itunesSearchAPI + "?entity=album&term=\(goodSearch)", parameters: nil, success: { (request, data) -> Void in
             
             let info = data as! [String:AnyObject]
             
@@ -144,12 +148,14 @@ class AlbumCollectionViewController: UICollectionViewController, UICollectionVie
                 
                 println(error)
         }
-
+        
         
     }
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         // pull keyboard back down
+        
+        
     }
     
 }

@@ -9,6 +9,7 @@
 import UIKit
 
 class ArtistSearchBar: UISearchBar {
+    
 
     /*
     // Only override drawRect: if you perform custom drawing.
